@@ -64,11 +64,7 @@ public class SingInDemo extends WindowAdapter implements ActionListener {
         if(e.getSource()==b1){
             String name = tf1.getText();
             String password = tf2.getText();
-            if(name.equals(user_name)&&password.equals(user_pass)){
-                displayDialog(true);
-            }else{
-                displayDialog(false);
-            }
+            displayDialog(name.equals(user_name) && password.equals(user_pass));
         }else if(e.getSource() == b2){
             tf1.setText("");
             tf2.setText("");

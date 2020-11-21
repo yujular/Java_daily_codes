@@ -10,6 +10,8 @@ import java.awt.event.*;
  * @date 2020/11/21
  */
 public class SingInDemo extends WindowAdapter implements ActionListener {
+    static String user_name = "admin";
+    static String user_pass = "123456";
     Frame f;
     TextField tf1;
     TextField tf2;
@@ -39,29 +41,22 @@ public class SingInDemo extends WindowAdapter implements ActionListener {
          f.addWindowListener(this);
     }
 
-    private void displayOK(){
+    private void displayDialog(boolean type){
         d1 = new Dialog(f,"信息",true);//模式对话框
         d1.setSize(180,100);
         d1.setLayout(new FlowLayout());
         b3 = new Button("确定");
-        d1.add(new Label("恭喜您，登录成功!!!"));
+        if(type){
+            d1.add(new Label("恭喜您，登录成功!!!"));
+        }else{
+            d1.add(new Label("很抱歉，登陆失败！"));
+        }
         d1.add(b3);
         d1.addWindowListener(this);
         b3.addActionListener(this);
         d1.setVisible(true);
     }
 
-    private void displayFail(){
-        d1 = new Dialog(f,"信息",true);//模式对话框
-        d1.setSize(180,100);
-        d1.setLayout(new FlowLayout());
-        b3 = new Button("确定");
-        d1.add(new Label("很抱歉，登录失败！"));
-        d1.add(b3);
-        d1.addWindowListener(this);
-        b3.addActionListener(this);
-        d1.setVisible(true);
-    }
 
 
     @Override
@@ -69,10 +64,10 @@ public class SingInDemo extends WindowAdapter implements ActionListener {
         if(e.getSource()==b1){
             String name = tf1.getText();
             String password = tf2.getText();
-            if(name.equals("admin")&&password.equals("123456")){
-                displayOK();
+            if(name.equals(user_name)&&password.equals(user_pass)){
+                displayDialog(true);
             }else{
-                displayFail();
+                displayDialog(false);
             }
         }else if(e.getSource() == b2){
             tf1.setText("");

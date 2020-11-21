@@ -42,7 +42,8 @@ public class SingInDemo extends WindowAdapter implements ActionListener {
     }
 
     private void displayDialog(boolean type){
-        d1 = new Dialog(f,"信息",true);//模式对话框
+        //模式对话框
+        d1 = new Dialog(f,"信息",true);
         d1.setSize(180,100);
         d1.setLayout(new FlowLayout());
         b3 = new Button("确定");
